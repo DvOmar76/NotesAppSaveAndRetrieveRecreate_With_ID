@@ -29,12 +29,14 @@ class DBHelper(context: Context):SQLiteOpenHelper(context,"Notes",null,1) {
     fun getNotes(): ArrayList<String> {
         val notes=ArrayList<String>()
         val cursor:Cursor=reade.query("Notes",null,null,null,null,null,null)
-        cursor.moveToFirst()
-        while (cursor.moveToNext()){
+       if (cursor.moveToFirst()){
             var note=cursor.getString(cursor.getColumnIndex("note"))
             notes.add(note)
-            cursor.moveToNext()
-            Log.d("asdf645685",note)
+            while (cursor.moveToNext()){
+                note=cursor.getString(cursor.getColumnIndex("note"))
+                notes.add(note)
+                cursor.moveToNext()
+            }
         }
         cursor.close()
         return notes
