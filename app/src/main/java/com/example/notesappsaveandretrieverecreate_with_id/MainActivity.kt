@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                     if (status!=-1L)
                     {
                         Toast.makeText(applicationContext, "note added", Toast.LENGTH_SHORT).show()
-                        dbHelper.addNote(note)
+                        
                         notes=dbHelper.getNotes()
 //                        recyclerView.adapter?.notifyDataSetChanged()
                         recyclerView.adapter=RVAdapter(notes)
